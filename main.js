@@ -113,11 +113,9 @@ function registrarInforme() {
     method: "POST",
     body: formData,
   })
-    .then((response) => console.log(response.text()))
+    .then((response) => response.text())
     .then((data) => {
-      console.log(data);
-      // document.getElementById("contenido").innerHTML = data
-      // form.reset();
+      form.reset();
       alert("Formulario registrado correctamente");
     });
 }
