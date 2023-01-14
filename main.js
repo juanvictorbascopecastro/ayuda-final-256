@@ -10,6 +10,20 @@ function paginar(titulo, pagina) {
 
 paginar("INICIO", "inicio.html");
 
+function listar() {
+  document.getElementById("titulo").innerHTML = "Lista de alumnos";
+  if (!document.getElementById("numero").value) {
+    alert("El numero es requerido");
+    return;
+  }
+  fetch("paginas/listar.php?num=" + document.getElementById("numero").value)
+    .then((response) => response.text())
+    .then((data) => {
+      document.getElementById("contenido").innerHTML = data;
+    })
+    .catch((error) => console.log(error));
+}
+
 // function cambiarMenu(num){
 //     switch(num){
 //         case 1:
