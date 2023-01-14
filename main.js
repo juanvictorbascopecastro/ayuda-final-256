@@ -84,3 +84,40 @@ function actualizarNota(id) {
   };
   ajax.send(formDatos);
 }
+
+function registrarInforme() {
+  const form = document.getElementById("form-informe");
+  console.log(form);
+  if (!form.mes) {
+    alert("Seleccionar el mes");
+    return;
+  }
+  if (!form.SIS256.value) {
+    alert("El texto de informe de SIS256 es requerido!");
+    return;
+  }
+  if (!form.SIS258.value) {
+    alert("El texto de informe de SIS258 es requerido!");
+    return;
+  }
+  if (!form.SIS406.value) {
+    alert("El texto de informe de SIS406 es requerido!");
+    return;
+  }
+  const formData = new FormData(form);
+  //   formData.append("SIS256", form.SIS256.value);
+  //   formData.append("SIS258", form.SIS258.value);
+  //   formData.append("SIS406", form.SIS406.value);
+  //   formData.append("mes", form.mes.value);
+  fetch("php/insertar-informes.php", {
+    method: "POST",
+    body: formData,
+  })
+    .then((response) => console.log(response.text()))
+    .then((data) => {
+      console.log(data);
+      // document.getElementById("contenido").innerHTML = data
+      // form.reset();
+      alert("Formulario registrado correctamente");
+    });
+}

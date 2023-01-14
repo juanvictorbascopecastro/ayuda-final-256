@@ -24,8 +24,8 @@
             </div>
             <div class="menu" id="menu">
                 <button type="button">SIS256</button>
-                <button type="button">SIS320</button>
-                <button type="button">SIS312</button>
+                <button type="button">SIS258</button>
+                <button type="button">SIS406</button>
             </div>
         </div>
 
@@ -34,11 +34,11 @@
             <div class="encabezado">
 
                 <ul class="opciones">
-                    <li><a href="javascript:paginar('INICIO','inicio.html')">Inicio</li>
-                    <li><a href="javascript:paginar('Numero de cuadrados','nrocuadros.html')">Lista </li>
-                    <li><a href="javascript:horarios()">Horarios</li>
-                    <li><a href="javascript:listarAlumnos()">Calificaciones</li>
-                    <li><a href="#">Informes</li>
+                    <li><a href="javascript:paginar('INICIO','inicio.html')">Inicio</a></li>
+                    <li><a href="javascript:paginar('Numero de cuadrados','nrocuadros.html')">Lista </a></li>
+                    <li><a href="javascript:horarios()">Horarios</a></li>
+                    <li><a href="javascript:listarAlumnos()">Calificaciones</a></li>
+                    <li><a href="javascript:paginar('REGISTRAR INFORME','formularioinforme.php')">Informes</a></li>
                 </ul>
 
                 <div id="titulo">
