@@ -1,5 +1,8 @@
-function paginar(titulo, pagina) {
+function setTitulos(titulo) {
   document.getElementById("titulo").innerHTML = titulo;
+}
+function paginar(titulo, pagina) {
+  setTitulos(titulo);
   fetch(`paginas/${pagina}`)
     .then((response) => response.text())
     .then((data) => {
@@ -11,68 +14,36 @@ function paginar(titulo, pagina) {
 paginar("INICIO", "inicio.html");
 
 function listar() {
-  document.getElementById("titulo").innerHTML = "Lista de alumnos";
+  setTitulos("Lista de alumnos");
   if (!document.getElementById("numero").value) {
     alert("El numero es requerido");
     return;
   }
-  fetch("paginas/listar.php?num=" + document.getElementById("numero").value)
-    .then((response) => response.text())
-    .then((data) => {
-      document.getElementById("contenido").innerHTML = data;
-    })
-    .catch((error) => console.log(error));
+  var ajax = new XMLHttpRequest();
+  ajax.onreadystatechange = function () {
+    if (ajax.readyState == 4) {
+      document.getElementById("contenido").innerHTML = ajax.responseText;
+      // verificamos que pagina se va cargar
+    }
+  };
+  ajax.open(
+    "GET",
+    "paginas/listar.php?num=" + document.getElementById("numero").value,
+    true
+  );
+  ajax.send();
 }
 
-// function cambiarMenu(num){
-//     switch(num){
-//         case 1:
-//             document.getElementById('sis256').className = 'gray';
-//             document.getElementById('sis258').className = 'white';
-//             document.getElementById('sis406').className = 'white';
-//         break;
-//         case 2:
-//             document.getElementById('sis256').className = 'white';
-//             document.getElementById('sis258').className = 'gray';
-//             document.getElementById('sis406').className = 'white';
-//         break;
-//         case 3:
-//             document.getElementById('sis256').className = 'white';
-//             document.getElementById('sis258').className = 'white';
-//             document.getElementById('sis406').className = 'gray';
-//         break;
-//     }
-// }
-
-// function obtener(){
-//     const materia = document.querySelector('.gray');
-//     if(!materia){
-//         document.getElementById('error').innerHTML = 'Seleccionar la materia';
-//     }else{
-//         fetch('listar.php?num=' + document.getElementById("numero").value)
-//         .then(response => response.text())
-//         .then(data => {
-//             document.getElementById("contenido").innerHTML = data;
-//         })
-//         .catch(error => console.log(error));
-//     }
-// }
-// function cambiarNota(id){
-
-//     const nota = document.getElementById('input-'+id).value;
-
-//     var datos = new FormData();
-//     datos.append('id', id);
-//     datos.append('calificacion', nota);
-
-//     fetch("registrarcalificación.php",
-//         {
-//             method: "POST",
-//             body: datos
-//         })
-//         .then(response => response.text())
-//         .then(data => {
-//             document.getElementById('respuesta').innerHTML = data;
-//         })
-//         .catch(error => console.log(error));
-// }
+function horarios() {
+  const materia = "SIS256";
+  setTitulos("Horarios " + materia);
+  var ajax = new XMLHttpRequest();
+  ajax.onreadystatechange = function () {
+    if (ajax.readyState == 4) {
+      document.getElementById("contenido").innerHTML = ajax.responseText;
+      // verificamos que pagina se va cargar
+    }
+  };
+  ajax.open("GET", `paginas/horarios.php?materia=${materia}`, true);
+  ajax.send();
+}

@@ -36,7 +36,7 @@
                 <ul class="opciones">
                     <li><a href="javascript:paginar('INICIO','inicio.html')">Inicio</li>
                     <li><a href="javascript:paginar('Numero de cuadrados','nrocuadros.html')">Lista </li>
-                    <li><a href="#">Horarios</li>
+                    <li><a href="javascript:horarios()">Horarios</li>
                     <li><a href="#">Calificaciones</li>
                     <li><a href="#">Informes</li>
                 </ul>

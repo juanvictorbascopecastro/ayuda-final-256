@@ -124,3 +124,9 @@ ul.menu li a:hover {
 .border {
     border: 1px solid #ccc;
 }
+table{ 
+    width: 100%;
+}
+table, th, td {
+    border: 1px solid #444;
+}
